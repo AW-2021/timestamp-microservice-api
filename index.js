@@ -27,18 +27,19 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:date", (req, res) => {
   const dateObj = new Date(req.params.date);
 
-  if (dateObj == "Invalid Date") {
+  if (dateObj.toDateString()  === "Invalid Date") {
     const dateNumber = Number(req.params.date);
     const dateObj2 = new Date(dateNumber);
-
-    if (dateObj2 !== "Invalid Date") {
+    
+    if (dateObj2.toDateString() !== "Invalid Date") {
       const utcString2 = dateObj2.toUTCString();
-
+      
       res.json({
         unix: dateNumber,
         utc: utcString2,
       });
     } else {
+      console.log('HERE 3')
       res.json({ error: "Invalid Date" });
     }
   } else {
