@@ -39,7 +39,6 @@ app.get("/api/:date", (req, res) => {
         utc: utcString2,
       });
     } else {
-      console.log('HERE 3')
       res.json({ error: "Invalid Date" });
     }
   } else {
